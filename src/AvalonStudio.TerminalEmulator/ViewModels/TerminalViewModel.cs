@@ -4,6 +4,7 @@ using AvalonStudio.Terminals.Unix;
 using AvalonStudio.Terminals.Win32;
 using ReactiveUI;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using VtNetCore.Avalonia;
@@ -37,12 +38,18 @@ namespace AvalonStudio.TerminalEmulator.ViewModels
 
                 CloseConnection();
 
+                var args = new List<string>();
+
+                if(RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    args.Add("-l");
+                }
 
                 var shellExecutable = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? Environment.ExpandEnvironmentVariables("%SystemRoot%\\system32\\WindowsPowerShell\\v1.0\\powershell.exe") : "/bin/bash";
 
                 if (shellExecutable != null)
                 {
-                    var terminal = s_provider.Create(80, 32, workingDirectory, null, shellExecutable);
+                    var terminal = s_provider.Create(80, 32, workingDirectory, null, shellExecutable, args.ToArray());
 
                     Connection = new PsuedoTerminalConnection(terminal);
 

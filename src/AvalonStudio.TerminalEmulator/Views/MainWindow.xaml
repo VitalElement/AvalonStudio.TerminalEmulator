@@ -3,9 +3,10 @@
         xmlns:vm="clr-namespace:AvalonStudio.TerminalEmulator.ViewModels;assembly=AvalonStudio.TerminalEmulator"
         xmlns:vt100="clr-namespace:VtNetCore.Avalonia;assembly=VtNetCore.Avalonia"
         Icon="resm:AvalonStudio.TerminalEmulator.Assets.avalonia-logo.ico"
-        Title="AvalonStudio.TerminalEmulator" Background="Black">
-    <Panel>
+        Title="AvalonStudio.TerminalEmulator" Background="Black" MinHeight="600" MinWidth="800">
+    <Grid>
         <TextBlock Text="Terminal is not connected." VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <vt100:VirtualTerminalControl ActiveConnection="{Binding Connection}" IsVisible="{Binding TerminalVisible}" FontFamily="Consolas, Ubuntu" Focusable="True" />
-    </Panel>
+        <vt100:VirtualTerminalControl ActiveConnection="{Binding Connection}" IsVisible="{Binding TerminalVisible}" FontFamily="Consolas, Ubuntu, Monaco" Focusable="True" />
+        <TextBox Text="Test" />
+    </Grid>
 </Window>
