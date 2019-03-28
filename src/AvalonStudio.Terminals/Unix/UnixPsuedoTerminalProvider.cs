@@ -47,7 +47,7 @@ namespace AvalonStudio.Terminals.Unix
             envVars.Add(null);
 
             var path = System.Reflection.Assembly.GetEntryAssembly().Location;
-            var argsArray = new List<string> { "dotnet", path, "--trampoline", command };
+            var argsArray = new List<string> { "dotnet", path, "--trampoline", initialDirectory, command };
             argsArray.AddRange(arguments);
             argsArray.Add(null);
 

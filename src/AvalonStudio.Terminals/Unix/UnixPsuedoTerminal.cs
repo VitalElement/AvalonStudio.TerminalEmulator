@@ -30,10 +30,11 @@ namespace AvalonStudio.Terminals.Unix
 
         public static void Trampoline(string[] args)
         {
-            if (args.Length > 1 && args[0] == "--trampoline")
+            if (args.Length > 2 && args[0] == "--trampoline")
             {
                 Native.setsid();
                 Native.ioctl(0, Native.TIOCSCTTY, IntPtr.Zero);
+                Native.chdir(args[1]);
 
                 var envVars = new List<string>();
                 var env = Environment.GetEnvironmentVariables();
@@ -49,10 +50,10 @@ namespace AvalonStudio.Terminals.Unix
                 envVars.Add("TERM=xterm-256color");
                 envVars.Add(null);
 
-                var argsArray = args.Skip(2).ToList();
+                var argsArray = args.Skip(3).ToList();
                 argsArray.Add(null);
 
-                Native.execve(args[1], argsArray.ToArray(), envVars.ToArray());
+                Native.execve(args[2], argsArray.ToArray(), envVars.ToArray());
             }
             else
             {

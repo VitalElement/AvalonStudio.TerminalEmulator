@@ -57,6 +57,7 @@ namespace AvalonStudio.Terminals.Unix
         public delegate int ioctl(int fd, UInt64 ctl, IntPtr arg);
         public delegate void close(int fd);
         public delegate int open([MarshalAs(UnmanagedType.LPStr)] string file, int flags);
+        public delegate int chdir([MarshalAs(UnmanagedType.LPStr)] string path);
         public delegate IntPtr ptsname(int fd);
         public delegate int grantpt(int fd);
         public delegate int unlockpt(int fd);
@@ -111,6 +112,7 @@ namespace AvalonStudio.Terminals.Unix
         };
 
         public static NativeDelegates.open open = NativeDelegates.GetProc<NativeDelegates.open>();
+        public static NativeDelegates.chdir chdir = NativeDelegates.GetProc<NativeDelegates.chdir>();
         public static NativeDelegates.write write = NativeDelegates.GetProc<NativeDelegates.write>();
         public static NativeDelegates.grantpt grantpt = NativeDelegates.GetProc<NativeDelegates.grantpt>();
         public static NativeDelegates.unlockpt unlockpt = NativeDelegates.GetProc<NativeDelegates.unlockpt>();
