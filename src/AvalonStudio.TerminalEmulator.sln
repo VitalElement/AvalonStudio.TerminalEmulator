@@ -1,0 +1,27 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28714.193
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvalonStudio.TerminalEmulator", "AvalonStudio.TerminalEmulator\AvalonStudio.TerminalEmulator.csproj", "{6B06A72B-8D3E-4BEA-AFB6-09DC684ECB34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B06A72B-8D3E-4BEA-AFB6-09DC684ECB34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B06A72B-8D3E-4BEA-AFB6-09DC684ECB34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B06A72B-8D3E-4BEA-AFB6-09DC684ECB34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B06A72B-8D3E-4BEA-AFB6-09DC684ECB34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8C23CD4A-1E35-4F1E-9738-8F66249A2699}
+	EndGlobalSection
+	GlobalSection(AvalonStudioProperties) = preSolution
+		StartupItem = {D34BE5A0-269E-46D5-BE32-590AE7146EE1}
+	EndGlobalSection
+EndGlobal
