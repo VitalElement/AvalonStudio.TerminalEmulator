@@ -1,13 +1,11 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:AvalonStudio.TerminalEmulator.ViewModels;assembly=AvalonStudio.TerminalEmulator"
+        xmlns:vt100="clr-namespace:VtNetCore.Avalonia;assembly=VtNetCore.Avalonia"
         Icon="resm:AvalonStudio.TerminalEmulator.Assets.avalonia-logo.ico"
-        Title="AvalonStudio.TerminalEmulator">
-
-  <Design.DataContext>
-    <vm:MainWindowViewModel/>
-  </Design.DataContext>
-  
-  <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>    
-  
+        Title="AvalonStudio.TerminalEmulator" Background="Black">
+    <Panel>
+        <TextBlock Text="Terminal is not connected." VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <vt100:VirtualTerminalControl ActiveConnection="{Binding Connection}" IsVisible="{Binding TerminalVisible}" FontFamily="Consolas, Ubuntu" Focusable="True" />
+    </Panel>
 </Window>

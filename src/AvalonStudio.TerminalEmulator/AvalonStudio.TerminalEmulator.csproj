@@ -15,5 +15,16 @@
   <ItemGroup>
     <PackageReference Include="Avalonia.Desktop" Version="0.7.1-cibuild0001731-beta" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.7.1-cibuild0001731-beta" />
+    <PackageReference Include="ReactiveUI" Version="9.12.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\VtNetCore.Avalonia\VtNetCore.Avalonia\VtNetCore.Avalonia.csproj" />
+    <ProjectReference Include="..\..\VtNetCore.Avalonia\VtNetCore\VtNetCore\VtNetCore.csproj" />
+    <ProjectReference Include="..\AvalonStudio.Terminals\AvalonStudio.Terminals.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="VtNetCore.Avalonia">
+      <HintPath>..\..\VtNetCore.Avalonia\VtNetCore.Avalonia\bin\Debug\netstandard2.0\VtNetCore.Avalonia.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

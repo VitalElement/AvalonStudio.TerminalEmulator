@@ -10,7 +10,7 @@ namespace AvalonStudio.TerminalEmulator
     {
         static void Main(string[] args)
         {
-            BuildAvaloniaApp().Start<MainWindow>(() => new MainWindowViewModel());
+            BuildAvaloniaApp().Start<MainWindow>(() => new TerminalViewModel());
         }
 
         public static AppBuilder BuildAvaloniaApp()
