@@ -1,0 +1,3 @@
+[submodule "VtNetCore.Avalonia"]
+	path = VtNetCore.Avalonia
+	url = https://github.com/VitalElement/VtNetCore.Avalonia.git
