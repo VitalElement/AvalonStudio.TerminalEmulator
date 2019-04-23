@@ -1,4 +1,6 @@
-<Application xmlns="https://github.com/avaloniaui"
+<Application x:Class="AvalonStudio.TerminalEmulator.App"
+             xmlns="https://github.com/avaloniaui"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:AvalonStudio.TerminalEmulator">
   <Application.DataTemplates>

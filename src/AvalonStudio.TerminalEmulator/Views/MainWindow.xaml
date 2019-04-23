@@ -1,4 +1,6 @@
-<Window xmlns="https://github.com/avaloniaui"
+<Window x:Class="AvalonStudio.TerminalEmulator.MainWindow"
+             xmlns="https://github.com/avaloniaui"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:AvalonStudio.TerminalEmulator.ViewModels;assembly=AvalonStudio.TerminalEmulator"
         xmlns:vt100="clr-namespace:VtNetCore.Avalonia;assembly=VtNetCore.Avalonia"
