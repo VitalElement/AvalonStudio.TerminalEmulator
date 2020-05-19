@@ -1,13 +1,30 @@
-<Window x:Class="AvalonStudio.TerminalEmulator.MainWindow"
-             xmlns="https://github.com/avaloniaui"
-              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+<Window x:Class="AvalonStudio.TerminalEmulator.Views.MainWindow"
+        xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:AvalonStudio.TerminalEmulator.ViewModels;assembly=AvalonStudio.TerminalEmulator"
         xmlns:vt100="clr-namespace:VtNetCore.Avalonia;assembly=VtNetCore.Avalonia"
         Icon="resm:AvalonStudio.TerminalEmulator.Assets.avalonia-logo.ico"
-        Title="AvalonStudio.TerminalEmulator" Background="Black" MinHeight="600" MinWidth="800">
+        Title="AvalonStudio.TerminalEmulator" Background="White" MinHeight="600" MinWidth="800">
+  <Window.Styles>
+    <Style Selector="vt100|VirtualTerminalControl">
+      <Setter Property="Background" Value="{DynamicResource ThemeControlMidBrush}"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderLightBrush}"/>
+      <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}"/>
+      <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}"/>
+      <Setter Property="Focusable" Value="True" />
+      <Setter Property="Padding" Value="4"/>
+      <Setter Property="FontSize" Value="14" />
+      <Setter Property="FontWeight" Value="Thin" />
+      <Setter Property="Cursor" Value="IBeam" />
+      <Setter Property="Template">
+        <ControlTemplate>
+          <Panel />
+        </ControlTemplate>
+      </Setter>
+    </Style>
+  </Window.Styles>
     <Panel>
-        <TextBlock Text="Terminal is not connected." VerticalAlignment="Center" HorizontalAlignment="Center" />        
-        <vt100:VirtualTerminalControl ActiveConnection="{Binding Connection}" IsVisible="{Binding TerminalVisible}" FontFamily="Consolas, Ubuntu, Monaco" Focusable="True" />
+        <TextBlock Text="Terminal is not connected." IsVisible="{Binding !TerminalVisible}" VerticalAlignment="Center" HorizontalAlignment="Center" />        
+        <vt100:VirtualTerminalControl Name="Terminal" Terminal="{Binding Terminal}" Connection="{Binding Connection}" IsVisible="{Binding TerminalVisible}" FontFamily="Consolas, Ubuntu, Monaco" Focusable="True" />
     </Panel>
 </Window>

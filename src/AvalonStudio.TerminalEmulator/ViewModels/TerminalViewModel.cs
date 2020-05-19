@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using VtNetCore.Avalonia;
+using VtNetCore.VirtualTerminal;
 
 namespace AvalonStudio.TerminalEmulator.ViewModels
 {
@@ -15,11 +16,13 @@ namespace AvalonStudio.TerminalEmulator.ViewModels
     {
         private IConnection _connection;
         private bool _terminalVisible;
+        private VirtualTerminalController _terminal;
         private object _createLock = new object();
         static IPsuedoTerminalProvider s_provider = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? new Win32PsuedoTerminalProvider() : new UnixPsuedoTerminalProvider() as IPsuedoTerminalProvider;
 
         public TerminalViewModel()
         {
+
             Dispatcher.UIThread.Post(() =>
             {
                 CreateConnection();
@@ -40,20 +43,24 @@ namespace AvalonStudio.TerminalEmulator.ViewModels
 
                 var args = new List<string>();
 
-                if(RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
                 {
                     args.Add("-l");
                 }
 
                 var shellExecutable = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? Environment.ExpandEnvironmentVariables("%SystemRoot%\\system32\\WindowsPowerShell\\v1.0\\powershell.exe") : "/bin/bash";
 
-                if (shellExecutable != null)
+                if (!string.IsNullOrEmpty(shellExecutable))
                 {
                     var terminal = s_provider.Create(80, 32, workingDirectory, null, shellExecutable, args.ToArray());
 
                     Connection = new PsuedoTerminalConnection(terminal);
 
+                    Terminal = new VirtualTerminalController();
+
                     TerminalVisible = true;
+
+                    Connection.Connect();
 
                     Connection.Closed += Connection_Closed;
                 }
@@ -81,6 +88,12 @@ namespace AvalonStudio.TerminalEmulator.ViewModels
         {
             get { return _connection; }
             set { this.RaiseAndSetIfChanged(ref _connection, value); }
+        }
+
+        public VirtualTerminalController Terminal
+        {
+            get => _terminal;
+            set => this.RaiseAndSetIfChanged(ref _terminal, value);
         }
 
         public bool TerminalVisible
