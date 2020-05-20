@@ -14,7 +14,7 @@ namespace AvalonStudio.TerminalEmulator
         // yet and stuff might break.
         public static void Main(string[] args)
         {
-            UnixPsuedoTerminal.Trampoline(args);
+            //UnixPsuedoTerminal.Trampoline(args);
 
             BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
         }

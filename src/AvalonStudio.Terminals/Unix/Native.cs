@@ -123,9 +123,12 @@ namespace AvalonStudio.Terminals.Unix
         public static NativeDelegates.posix_spawnattr_init posix_spawnattr_init = NativeDelegates.GetProc<NativeDelegates.posix_spawnattr_init>();
         public static NativeDelegates.posix_spawnp posix_spawnp = NativeDelegates.GetProc<NativeDelegates.posix_spawnp>();
         public static NativeDelegates.dup dup = NativeDelegates.GetProc<NativeDelegates.dup>();
+        public static NativeDelegates.dup2 dup2 = NativeDelegates.GetProc<NativeDelegates.dup2>();
         public static NativeDelegates.setsid setsid = NativeDelegates.GetProc<NativeDelegates.setsid>();
         public static NativeDelegates.ioctl ioctl = NativeDelegates.GetProc<NativeDelegates.ioctl>();        
         public static NativeDelegates.execve execve = NativeDelegates.GetProc<NativeDelegates.execve>();
+        public static NativeDelegates.fork fork = NativeDelegates.GetProc<NativeDelegates.fork>();
+
 
         public static IntPtr StructToPtr(object obj)
         {
