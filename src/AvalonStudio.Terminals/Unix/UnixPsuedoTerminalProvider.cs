@@ -34,23 +34,9 @@ namespace AvalonStudio.Terminals.Unix
             var attributes = Marshal.AllocHGlobal(1024);
             res = Native.posix_spawnattr_init(attributes);
 
-            var envVars = new List<string>();
-            var env = Environment.GetEnvironmentVariables();
-
-            foreach(var variable in env.Keys)
-            {
-                if(variable.ToString() != "TERM")
-                {
-                    envVars.Add($"{variable}={env[variable]}");
-                }
-            }
-
             int pid = Native.fork(); //Divided into two processes
 
-            if(pid == 0) RunBash("/data", name);
-
-            envVars.Add("TERM=xterm-256color");
-            envVars.Add(null);  
+            if(pid == 0) RunBash(initialDirectory, name);
 
             var stdin = Native.dup(fdm);
             var process = Process.GetProcessById((int)pid);
