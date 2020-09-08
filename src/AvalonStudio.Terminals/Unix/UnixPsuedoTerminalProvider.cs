@@ -36,14 +36,14 @@ namespace AvalonStudio.Terminals.Unix
 
             int pid = Native.fork(); //Divided into two processes
 
-            if(pid == 0) RunBash(initialDirectory, name);
+            if(pid == 0) RunBash(initialDirectory, name, arguments);
 
             var stdin = Native.dup(fdm);
             var process = Process.GetProcessById((int)pid);
             return new UnixPsuedoTerminal(process, fds, stdin, new FileStream(new SafeFileHandle(new IntPtr(stdin), true), FileAccess.Write), new FileStream(new SafeFileHandle(new IntPtr(fdm), true), FileAccess.Read));
         }
          
-        public static void RunBash(string path, string pt) {
+        public static void RunBash(string path, string pt, string[] arguments) {
 
             int slave = Native.open(pt, Native.O_RDWR);
  
@@ -69,6 +69,7 @@ namespace AvalonStudio.Terminals.Unix
 
             var argsArray = new List<string>();
             argsArray.Add("/bin/bash");
+            if(arguments.Length > 0 && !string.IsNullOrEmpty(arguments[0])) argsArray.AddRange(arguments);
             argsArray.Add(null);
 
             Native.execve(argsArray[0], argsArray.ToArray(), envVars.ToArray());
