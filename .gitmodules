@@ -1,3 +1,4 @@
 [submodule "VtNetCore.Avalonia"]
 	path = VtNetCore.Avalonia
 	url = https://github.com/HendrikMennen/VtNetCore.Avalonia.git
+	branch = master
